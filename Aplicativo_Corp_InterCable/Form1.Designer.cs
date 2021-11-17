@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CloseWindow = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.BtnIngresar = new System.Windows.Forms.Button();
+            this.InputPass = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.InputUser = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CloseWindow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,10 +55,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.CadetBlue;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.BtnIngresar);
+            this.panel1.Controls.Add(this.InputPass);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.InputUser);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CloseWindow);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -67,16 +67,49 @@
             this.panel1.Size = new System.Drawing.Size(411, 568);
             this.panel1.TabIndex = 1;
             // 
-            // CloseWindow
+            // BtnIngresar
             // 
-            this.CloseWindow.AutoSize = true;
-            this.CloseWindow.Font = new System.Drawing.Font("Microsoft JhengHei UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseWindow.Location = new System.Drawing.Point(371, 11);
-            this.CloseWindow.Name = "CloseWindow";
-            this.CloseWindow.Size = new System.Drawing.Size(21, 23);
-            this.CloseWindow.TabIndex = 2;
-            this.CloseWindow.Text = "X";
-            this.CloseWindow.Click += new System.EventHandler(this.label1_Click);
+            this.BtnIngresar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnIngresar.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnIngresar.Location = new System.Drawing.Point(96, 321);
+            this.BtnIngresar.Name = "BtnIngresar";
+            this.BtnIngresar.Size = new System.Drawing.Size(217, 45);
+            this.BtnIngresar.TabIndex = 7;
+            this.BtnIngresar.Text = "Ingresar";
+            this.BtnIngresar.UseVisualStyleBackColor = false;
+            this.BtnIngresar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // InputPass
+            // 
+            this.InputPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.InputPass.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputPass.Location = new System.Drawing.Point(84, 241);
+            this.InputPass.Name = "InputPass";
+            this.InputPass.PasswordChar = '*';
+            this.InputPass.Size = new System.Drawing.Size(246, 25);
+            this.InputPass.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(79, 210);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 28);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Contraseña";
+            // 
+            // InputUser
+            // 
+            this.InputUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.InputUser.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputUser.Location = new System.Drawing.Point(84, 153);
+            this.InputUser.Name = "InputUser";
+            this.InputUser.Size = new System.Drawing.Size(246, 25);
+            this.InputUser.TabIndex = 4;
+            this.InputUser.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label2
             // 
@@ -89,49 +122,16 @@
             this.label2.Text = "Usuario";
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
-            // textBox1
+            // CloseWindow
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(84, 153);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(246, 25);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(84, 241);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(246, 25);
-            this.textBox2.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(79, 210);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 28);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Contraseña";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Location = new System.Drawing.Point(96, 321);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(217, 45);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Ingresar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CloseWindow.AutoSize = true;
+            this.CloseWindow.Font = new System.Drawing.Font("Microsoft JhengHei UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseWindow.Location = new System.Drawing.Point(371, 11);
+            this.CloseWindow.Name = "CloseWindow";
+            this.CloseWindow.Size = new System.Drawing.Size(21, 23);
+            this.CloseWindow.TabIndex = 2;
+            this.CloseWindow.Text = "X";
+            this.CloseWindow.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
@@ -154,10 +154,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label CloseWindow;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox InputUser;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button BtnIngresar;
+        private System.Windows.Forms.TextBox InputPass;
         private System.Windows.Forms.Label label3;
     }
 }

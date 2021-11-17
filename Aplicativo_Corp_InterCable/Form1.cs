@@ -44,12 +44,32 @@ namespace Aplicativo_Corp_InterCable
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (ValidarUsuario(InputUser.Text, InputPass.Text))
+            {
+                Principal principal = new Principal();
+                principal.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos","Mensaje del sistema",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
+        private Boolean ValidarUsuario(string user, string password)
+        {
+            bool valid = false;
+            if (user== "demo" && password == "demo")
+            {
+                valid = true;
+            }
+            return valid;
+        }
+        
+
     }
 }
