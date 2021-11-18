@@ -90,6 +90,7 @@
             this.InputPass.PasswordChar = '*';
             this.InputPass.Size = new System.Drawing.Size(246, 25);
             this.InputPass.TabIndex = 6;
+            this.InputPass.Text = "demo";
             // 
             // label3
             // 
@@ -109,6 +110,7 @@
             this.InputUser.Name = "InputUser";
             this.InputUser.Size = new System.Drawing.Size(246, 25);
             this.InputUser.TabIndex = 4;
+            this.InputUser.Text = "demo";
             this.InputUser.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label2

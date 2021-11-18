@@ -146,10 +146,30 @@ namespace Aplicativo_Corp_InterCable
 
         private void button1_Click(object sender, EventArgs e)
         {
+            AgregarCliente agregarCliente = new AgregarCliente();
+            agregarCliente.MdiParent = this;
+            agregarCliente.Show();
 
         }
 
         private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+ 
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
+
+        private void menuStrip_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
