@@ -108,5 +108,50 @@ namespace Aplicativo_Corp_InterCable
         {
 
         }
+
+        private void toolsMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void Principal_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileMenu_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
