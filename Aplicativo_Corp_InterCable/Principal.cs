@@ -154,7 +154,9 @@ namespace Aplicativo_Corp_InterCable
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            FormPlanes formPlanes = new FormPlanes();
+            formPlanes.MdiParent = this;
+            formPlanes.Show();
         }
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,13 +167,20 @@ namespace Aplicativo_Corp_InterCable
         private void exit_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1();
+            Login form1 = new Login();
             form1.Show();
         }
 
         private void menuStrip_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void Recibo_Click(object sender, EventArgs e)
+        {
+            GenerarRecib generarRecib = new GenerarRecib();
+            generarRecib.MdiParent = this;
+            generarRecib.Show();
         }
     }
 }
