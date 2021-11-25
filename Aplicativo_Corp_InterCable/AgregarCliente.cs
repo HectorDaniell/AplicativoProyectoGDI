@@ -23,7 +23,10 @@ namespace Aplicativo_Corp_InterCable
 
         private void AgregarCliente_Load(object sender, EventArgs e)
         {
-            
+            contact.Visible = false;
+            buscCod.Enabled = false;
+            VerOlt.Visible = false;
+            buscCod.Visible = false;
             using (SqlConnection connection = ConectorBD.ConnectToDB())
             {
                 try
@@ -200,6 +203,235 @@ namespace Aplicativo_Corp_InterCable
         {
             
             
+        }
+
+        private void Telef_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (BuscPorNomb.Checked == true)
+            {
+                ApellNomb.Enabled = false;
+                Dni.Enabled = false;
+                Estado.Enabled = false;
+                Distrito.Enabled = false;
+                Direccion.Enabled = false;
+                CodOnu.Enabled = false;
+                Olt.Enabled = false;
+                Alta.Enabled = false;
+                Deuda.Enabled = false;
+                Comen.Enabled = false;
+                Telef.Enabled = false;
+                contact.Visible = true;
+                buscCod.Enabled = true;
+                VerOlt.Visible = true;
+                buscCod.Visible = true;
+            }
+            else
+            {
+                
+                ApellNomb.Enabled = true;
+                Dni.Enabled = true;
+                Estado.Enabled = true;
+                Distrito.Enabled = true;
+                Direccion.Enabled = true;
+                CodOnu.Enabled = true;
+                Olt.Enabled = true;
+                Alta.Enabled = true;
+                Deuda.Enabled = true;
+                Comen.Enabled = true;
+                Telef.Enabled = true;
+                contact.Visible = false;
+                buscCod.Enabled = false;
+                VerOlt.Visible = false;
+                buscCod.Visible = false;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+                   
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_clientes_activos";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+                    
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    ListaCliente.DataSource = dt;
+                    ListaCliente.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+                    int velocidadPlan = int.Parse(Cod.Text);
+
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_buscar_cliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@CodClie";
+                    param.SqlDbType = SqlDbType.NVarChar;
+                    param.Value = velocidadPlan;
+
+                    cmd.Parameters.Add(param);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    ListaCliente.DataSource = dt;
+                    ListaCliente.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+                    int velocidadPlan = int.Parse(Cod.Text);
+
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_Contactar_cliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@CodClie";
+                    param.SqlDbType = SqlDbType.NVarChar;
+                    param.Value = velocidadPlan;
+
+                    cmd.Parameters.Add(param);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    ListaCliente.DataSource = dt;
+                    ListaCliente.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            ListaCliente.DataSource = "";
+            ListaCliente.Refresh();
+        }
+
+        private void Deudas_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_deudas_clientes";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    ListaCliente.DataSource = dt;
+                    ListaCliente.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void VerOlt_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+                    int velocidadPlan = int.Parse(Cod.Text);
+
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_OLT_cliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@CodClie";
+                    param.SqlDbType = SqlDbType.NVarChar;
+                    param.Value = velocidadPlan;
+
+                    cmd.Parameters.Add(param);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    ListaCliente.DataSource = dt;
+                    ListaCliente.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

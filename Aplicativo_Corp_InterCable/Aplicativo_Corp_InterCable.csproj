@@ -54,6 +54,12 @@
       <DependentUpon>AgregarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="ConectorBD.cs" />
+    <Compile Include="DispositivosONU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DispositivosONU.Designer.cs">
+      <DependentUpon>DispositivosONU.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPlanes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="NuevoServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevoServicio.Designer.cs">
+      <DependentUpon>NuevoServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,9 @@
     <EmbeddedResource Include="AgregarCliente.resx">
       <DependentUpon>AgregarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DispositivosONU.resx">
+      <DependentUpon>DispositivosONU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPlanes.resx">
       <DependentUpon>FormPlanes.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevoServicio.resx">
+      <DependentUpon>NuevoServicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

@@ -182,5 +182,29 @@ namespace Aplicativo_Corp_InterCable
             generarRecib.MdiParent = this;
             generarRecib.Show();
         }
+
+        private void Registros_Click(object sender, EventArgs e)
+        {
+            NuevoServicio nuevoServicio = new NuevoServicio();
+            nuevoServicio.MdiParent = this;
+            nuevoServicio.Show();
+        }
+
+        private void Devices_Click(object sender, EventArgs e)
+        {
+            DispositivosONU dispositivosONU= new DispositivosONU();
+            dispositivosONU.MdiParent = this;
+            dispositivosONU.Show();
+        }
+
+        private void statusStrip_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

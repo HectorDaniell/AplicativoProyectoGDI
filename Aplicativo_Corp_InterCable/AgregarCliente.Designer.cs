@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarCliente));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Telef = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Deuda = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.Comen = new System.Windows.Forms.RichTextBox();
             this.Alta = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,23 +57,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.ListaCliente = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buscCod = new System.Windows.Forms.Button();
+            this.BuscPorNomb = new System.Windows.Forms.CheckBox();
+            this.clieActivos = new System.Windows.Forms.Button();
+            this.contact = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.Telef = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.Clear = new System.Windows.Forms.Button();
+            this.Deudas = new System.Windows.Forms.Button();
+            this.VerOlt = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListaCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.groupBox1.Controls.Add(this.Telef);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
@@ -99,10 +104,30 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(774, 249);
+            this.groupBox1.Size = new System.Drawing.Size(774, 258);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Telef
+            // 
+            this.Telef.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Telef.Location = new System.Drawing.Point(25, 183);
+            this.Telef.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
+            this.Telef.Name = "Telef";
+            this.Telef.Size = new System.Drawing.Size(118, 25);
+            this.Telef.TabIndex = 42;
+            this.Telef.TextChanged += new System.EventHandler(this.Telef_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(22, 163);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 17);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "Telefono:";
             // 
             // label12
             // 
@@ -139,17 +164,31 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(25, 166);
+            this.label10.Location = new System.Drawing.Point(157, 163);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 17);
             this.label10.TabIndex = 37;
             this.label10.Text = "Comentario:";
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnNuevo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnNuevo.Location = new System.Drawing.Point(451, 192);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(121, 36);
+            this.btnNuevo.TabIndex = 17;
+            this.btnNuevo.Text = "Agregar Cliente";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // Comen
             // 
-            this.Comen.Location = new System.Drawing.Point(25, 186);
+            this.Comen.Location = new System.Drawing.Point(160, 183);
             this.Comen.Name = "Comen";
-            this.Comen.Size = new System.Drawing.Size(308, 50);
+            this.Comen.Size = new System.Drawing.Size(268, 60);
             this.Comen.TabIndex = 36;
             this.Comen.Text = "";
             // 
@@ -347,125 +386,146 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnSalir.Location = new System.Drawing.Point(640, 572);
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalir.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSalir.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Segoe UI Symbol", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalir.Location = new System.Drawing.Point(37, 585);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(112, 37);
+            this.btnSalir.Size = new System.Drawing.Size(112, 34);
             this.btnSalir.TabIndex = 19;
             this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnNuevo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnNuevo.Location = new System.Drawing.Point(482, 176);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(102, 36);
-            this.btnNuevo.TabIndex = 17;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // ListaCliente
             // 
+            this.ListaCliente.AllowUserToAddRows = false;
+            this.ListaCliente.AllowUserToDeleteRows = false;
+            this.ListaCliente.AllowUserToOrderColumns = true;
+            this.ListaCliente.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ListaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListaCliente.Location = new System.Drawing.Point(37, 276);
+            this.ListaCliente.Location = new System.Drawing.Point(206, 276);
             this.ListaCliente.Name = "ListaCliente";
-            this.ListaCliente.Size = new System.Drawing.Size(715, 210);
+            this.ListaCliente.ReadOnly = true;
+            this.ListaCliente.Size = new System.Drawing.Size(546, 333);
             this.ListaCliente.TabIndex = 21;
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.CadetBlue;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(640, 492);
+            this.button1.Location = new System.Drawing.Point(12, 276);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
+            this.button1.Size = new System.Drawing.Size(155, 34);
             this.button1.TabIndex = 22;
             this.button1.Text = "Listar Clientes";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(640, 532);
+            this.button2.Location = new System.Drawing.Point(12, 316);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
+            this.button2.Size = new System.Drawing.Size(155, 34);
             this.button2.TabIndex = 23;
-            this.button2.Text = "Modificar";
+            this.button2.Text = "Modificar Cliente";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buscCod
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(58, 492);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(156, 34);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Buscar por Nombre";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buscCod.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.buscCod.Location = new System.Drawing.Point(30, 481);
+            this.buscCod.Name = "buscCod";
+            this.buscCod.Size = new System.Drawing.Size(119, 22);
+            this.buscCod.TabIndex = 24;
+            this.buscCod.Text = "Buscar por Codigo";
+            this.buscCod.UseVisualStyleBackColor = true;
+            this.buscCod.Click += new System.EventHandler(this.button3_Click);
             // 
-            // checkBox1
+            // BuscPorNomb
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(37, 501);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 25;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.BuscPorNomb.AutoSize = true;
+            this.BuscPorNomb.Location = new System.Drawing.Point(11, 449);
+            this.BuscPorNomb.Name = "BuscPorNomb";
+            this.BuscPorNomb.Size = new System.Drawing.Size(167, 17);
+            this.BuscPorNomb.TabIndex = 25;
+            this.BuscPorNomb.Text = "Filtro de Busqueda por codigo";
+            this.BuscPorNomb.UseVisualStyleBackColor = true;
+            this.BuscPorNomb.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // button4
+            // clieActivos
             // 
-            this.button4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.button4.Location = new System.Drawing.Point(58, 532);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(170, 34);
-            this.button4.TabIndex = 26;
-            this.button4.Text = "Buscar Clientes Activos";
-            this.button4.UseVisualStyleBackColor = true;
+            this.clieActivos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.clieActivos.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
+            this.clieActivos.Location = new System.Drawing.Point(11, 356);
+            this.clieActivos.Name = "clieActivos";
+            this.clieActivos.Size = new System.Drawing.Size(156, 34);
+            this.clieActivos.TabIndex = 26;
+            this.clieActivos.Text = "Buscar Clientes Activos";
+            this.clieActivos.UseVisualStyleBackColor = true;
+            this.clieActivos.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // contact
             // 
-            this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.button5.Location = new System.Drawing.Point(58, 572);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(170, 34);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "Nro. Clientes Activos";
-            this.button5.UseVisualStyleBackColor = true;
+            this.contact.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.contact.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.contact.Location = new System.Drawing.Point(30, 509);
+            this.contact.Name = "contact";
+            this.contact.Size = new System.Drawing.Size(118, 22);
+            this.contact.TabIndex = 27;
+            this.contact.Text = "Datos de Contacto ";
+            this.contact.UseVisualStyleBackColor = true;
+            this.contact.Click += new System.EventHandler(this.button5_Click);
             // 
-            // Telef
+            // Clear
             // 
-            this.Telef.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Telef.Location = new System.Drawing.Point(339, 187);
-            this.Telef.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
-            this.Telef.Name = "Telef";
-            this.Telef.Size = new System.Drawing.Size(118, 25);
-            this.Telef.TabIndex = 42;
+            this.Clear.Image = ((System.Drawing.Image)(resources.GetObject("Clear.Image")));
+            this.Clear.Location = new System.Drawing.Point(758, 276);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(26, 25);
+            this.Clear.TabIndex = 28;
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.button3_Click_1);
             // 
-            // label13
+            // Deudas
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(336, 167);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 17);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "Telefono:";
+            this.Deudas.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.Deudas.Location = new System.Drawing.Point(11, 396);
+            this.Deudas.Name = "Deudas";
+            this.Deudas.Size = new System.Drawing.Size(156, 34);
+            this.Deudas.TabIndex = 29;
+            this.Deudas.Text = "Ver Clientes con Deuda";
+            this.Deudas.UseVisualStyleBackColor = true;
+            this.Deudas.Click += new System.EventHandler(this.Deudas_Click);
+            // 
+            // VerOlt
+            // 
+            this.VerOlt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VerOlt.Location = new System.Drawing.Point(30, 537);
+            this.VerOlt.Name = "VerOlt";
+            this.VerOlt.Size = new System.Drawing.Size(118, 20);
+            this.VerOlt.TabIndex = 30;
+            this.VerOlt.Text = "Ver Clientes OLT";
+            this.VerOlt.UseVisualStyleBackColor = true;
+            this.VerOlt.Click += new System.EventHandler(this.VerOlt_Click);
             // 
             // AgregarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 631);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.VerOlt);
+            this.Controls.Add(this.Deudas);
+            this.Controls.Add(this.Clear);
+            this.Controls.Add(this.contact);
+            this.Controls.Add(this.clieActivos);
+            this.Controls.Add(this.BuscPorNomb);
+            this.Controls.Add(this.buscCod);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ListaCliente);
@@ -516,13 +576,16 @@
         private System.Windows.Forms.DataGridView ListaCliente;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buscCod;
+        private System.Windows.Forms.CheckBox BuscPorNomb;
+        private System.Windows.Forms.Button clieActivos;
+        private System.Windows.Forms.Button contact;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox Telef;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.Button Deudas;
+        private System.Windows.Forms.Button VerOlt;
     }
 
 

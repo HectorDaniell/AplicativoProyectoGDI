@@ -94,26 +94,56 @@ namespace Aplicativo_Corp_InterCable
         {
             if( FiltroPlanes.Checked == true)
             {
-                BusquedaVelPlan.Enabled = true;
-                InputVelPlan.Enabled = true;
+                BusquedaVelPlan.Visible = true;
+                InputVelPlan.Visible = true;
             }
             else
             {
-                BusquedaVelPlan.Enabled = false;
-                InputVelPlan.Enabled = false;
+                BusquedaVelPlan.Visible = false;
+                InputVelPlan.Visible = false;
             }
         }
 
         private void FormPlanes_Load(object sender, EventArgs e)
         {
-            BusquedaVelPlan.Enabled = false;
-            InputVelPlan.Enabled = false;
+            BusquedaVelPlan.Visible = false;
+            InputVelPlan.Visible = false;
         }
 
         private void Clear_Click(object sender, EventArgs e)
         {
             TablePlanes.DataSource = "";
             TablePlanes.Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_cuenta_clientes_plan";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    TablePlanes.DataSource = dt;
+                    TablePlanes.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

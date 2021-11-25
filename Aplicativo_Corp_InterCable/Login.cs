@@ -63,7 +63,7 @@ namespace Aplicativo_Corp_InterCable
         private Boolean ValidarUsuario(string user, string password)
         {
             bool valid = false;
-            if (user== "demo" && password == "demo")
+            if (user== "intercable" && password == "intercable")
             {
                 valid = true;
             }

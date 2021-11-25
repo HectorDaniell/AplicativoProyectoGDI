@@ -258,12 +258,14 @@
             this.statusStrip.Size = new System.Drawing.Size(1079, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
+            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip_ItemClicked_1);
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
-            this.toolStripStatusLabel.Text = "Estado";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(137, 17);
+            this.toolStripStatusLabel.Text = "Gestion Datos InterCable";
+            this.toolStripStatusLabel.Click += new System.EventHandler(this.toolStripStatusLabel_Click);
             // 
             // NewClient
             // 
@@ -290,6 +292,7 @@
             this.Devices.Text = "Dispositivos ONU";
             this.Devices.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Devices.UseVisualStyleBackColor = false;
+            this.Devices.Click += new System.EventHandler(this.Devices_Click);
             // 
             // ModifyPlan
             // 
@@ -326,9 +329,10 @@
             this.Registros.Name = "Registros";
             this.Registros.Size = new System.Drawing.Size(99, 75);
             this.Registros.TabIndex = 8;
-            this.Registros.Text = "Registros";
+            this.Registros.Text = "Servicios";
             this.Registros.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Registros.UseVisualStyleBackColor = false;
+            this.Registros.Click += new System.EventHandler(this.Registros_Click);
             // 
             // exit
             // 
@@ -353,7 +357,7 @@
             this.panel1.Controls.Add(this.ModifyPlan);
             this.panel1.Location = new System.Drawing.Point(12, 74);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(165, 509);
+            this.panel1.Size = new System.Drawing.Size(155, 509);
             this.panel1.TabIndex = 11;
             // 
             // Principal
@@ -361,7 +365,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Menu;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1079, 671);
             this.Controls.Add(this.panel1);
@@ -375,6 +379,7 @@
             this.Name = "Principal";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "InterCable";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

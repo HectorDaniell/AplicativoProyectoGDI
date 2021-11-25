@@ -37,6 +37,8 @@
             this.InputUser = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.CloseWindow = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +57,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.CadetBlue;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.BtnIngresar);
             this.panel1.Controls.Add(this.InputPass);
             this.panel1.Controls.Add(this.label3);
@@ -90,7 +94,7 @@
             this.InputPass.PasswordChar = '*';
             this.InputPass.Size = new System.Drawing.Size(246, 25);
             this.InputPass.TabIndex = 6;
-            this.InputPass.Text = "demo";
+            this.InputPass.Text = "intercable";
             // 
             // label3
             // 
@@ -110,7 +114,7 @@
             this.InputUser.Name = "InputUser";
             this.InputUser.Size = new System.Drawing.Size(246, 25);
             this.InputUser.TabIndex = 4;
-            this.InputUser.Text = "demo";
+            this.InputUser.Text = "intercable";
             this.InputUser.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label2
@@ -135,13 +139,33 @@
             this.CloseWindow.Text = "X";
             this.CloseWindow.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Form1
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(80, 486);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(152, 21);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Usuario: intercable";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(80, 507);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(182, 21);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Contraseña: intercable";
+            // 
+            // Login
             // 
             this.ClientSize = new System.Drawing.Size(824, 561);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -161,6 +185,8 @@
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.TextBox InputPass;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
     }
 }
 
