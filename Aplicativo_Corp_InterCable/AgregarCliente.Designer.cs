@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarCliente));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.AgregServ = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.Telef = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -68,6 +70,8 @@
             this.Clear = new System.Windows.Forms.Button();
             this.Deudas = new System.Windows.Forms.Button();
             this.VerOlt = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListaCliente)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +79,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBox1.Controls.Add(this.AgregServ);
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.Telef);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
@@ -108,6 +114,30 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // AgregServ
+            // 
+            this.AgregServ.BackColor = System.Drawing.SystemColors.Highlight;
+            this.AgregServ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AgregServ.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
+            this.AgregServ.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.AgregServ.Location = new System.Drawing.Point(588, 195);
+            this.AgregServ.Name = "AgregServ";
+            this.AgregServ.Size = new System.Drawing.Size(121, 36);
+            this.AgregServ.TabIndex = 43;
+            this.AgregServ.Text = "Asignar Servicio";
+            this.AgregServ.UseVisualStyleBackColor = false;
+            this.AgregServ.Click += new System.EventHandler(this.button3_Click_2);
+            // 
+            // button4
+            // 
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(742, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(26, 25);
+            this.button4.TabIndex = 44;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // Telef
             // 
@@ -176,7 +206,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnNuevo.Location = new System.Drawing.Point(451, 192);
+            this.btnNuevo.Location = new System.Drawing.Point(451, 195);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(121, 36);
             this.btnNuevo.TabIndex = 17;
@@ -412,6 +442,7 @@
             this.ListaCliente.ReadOnly = true;
             this.ListaCliente.Size = new System.Drawing.Size(546, 333);
             this.ListaCliente.TabIndex = 21;
+            this.ListaCliente.SelectionChanged += new System.EventHandler(this.ListaCliente_SelectionChanged);
             // 
             // button1
             // 
@@ -435,11 +466,12 @@
             this.button2.TabIndex = 23;
             this.button2.Text = "Modificar Cliente";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buscCod
             // 
             this.buscCod.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.buscCod.Location = new System.Drawing.Point(30, 481);
+            this.buscCod.Location = new System.Drawing.Point(30, 487);
             this.buscCod.Name = "buscCod";
             this.buscCod.Size = new System.Drawing.Size(119, 22);
             this.buscCod.TabIndex = 24;
@@ -450,7 +482,7 @@
             // BuscPorNomb
             // 
             this.BuscPorNomb.AutoSize = true;
-            this.BuscPorNomb.Location = new System.Drawing.Point(11, 449);
+            this.BuscPorNomb.Location = new System.Drawing.Point(11, 464);
             this.BuscPorNomb.Name = "BuscPorNomb";
             this.BuscPorNomb.Size = new System.Drawing.Size(167, 17);
             this.BuscPorNomb.TabIndex = 25;
@@ -474,7 +506,7 @@
             // 
             this.contact.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.contact.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.contact.Location = new System.Drawing.Point(30, 509);
+            this.contact.Location = new System.Drawing.Point(30, 515);
             this.contact.Name = "contact";
             this.contact.Size = new System.Drawing.Size(118, 22);
             this.contact.TabIndex = 27;
@@ -506,7 +538,7 @@
             // VerOlt
             // 
             this.VerOlt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VerOlt.Location = new System.Drawing.Point(30, 537);
+            this.VerOlt.Location = new System.Drawing.Point(30, 543);
             this.VerOlt.Name = "VerOlt";
             this.VerOlt.Size = new System.Drawing.Size(118, 20);
             this.VerOlt.TabIndex = 30;
@@ -514,11 +546,33 @@
             this.VerOlt.UseVisualStyleBackColor = true;
             this.VerOlt.Click += new System.EventHandler(this.VerOlt_Click);
             // 
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(758, 316);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(26, 25);
+            this.button3.TabIndex = 31;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_3);
+            // 
+            // button5
+            // 
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.Location = new System.Drawing.Point(758, 347);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(26, 25);
+            this.button5.TabIndex = 32;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // AgregarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 631);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.VerOlt);
             this.Controls.Add(this.Deudas);
             this.Controls.Add(this.Clear);
@@ -586,6 +640,10 @@
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button Deudas;
         private System.Windows.Forms.Button VerOlt;
+        private System.Windows.Forms.Button AgregServ;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
     }
 
 

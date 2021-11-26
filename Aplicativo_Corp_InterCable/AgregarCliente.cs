@@ -15,6 +15,7 @@ namespace Aplicativo_Corp_InterCable
     {
         DataTable tablaCliente = new DataTable();
         DataTable tablaTelefono = new DataTable();
+        public static string codCliente;
         
         public AgregarCliente()
         {
@@ -27,6 +28,7 @@ namespace Aplicativo_Corp_InterCable
             buscCod.Enabled = false;
             VerOlt.Visible = false;
             buscCod.Visible = false;
+            AgregServ.Visible = false;
             using (SqlConnection connection = ConectorBD.ConnectToDB())
             {
                 try
@@ -54,7 +56,7 @@ namespace Aplicativo_Corp_InterCable
                     MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -142,23 +144,23 @@ namespace Aplicativo_Corp_InterCable
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            
+
             using (SqlConnection connection = ConectorBD.ConnectToDB())
             {
                 try
                 {
-                   
-                    SqlDataAdapter adapter = new SqlDataAdapter("InsertClie",connection);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("InsertClie", connection);
                     connection.Open();
                     adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                    adapter.SelectCommand.Parameters.Add("@CodClie", SqlDbType.NVarChar, 7).Value= Cod.Text;
-                    adapter.SelectCommand.Parameters.Add("@ApellNomb", SqlDbType.NVarChar, 40).Value=ApellNomb.Text;
-                    adapter.SelectCommand.Parameters.Add("@Dni", SqlDbType.NVarChar, 8).Value=Dni.Text;
-                    adapter.SelectCommand.Parameters.Add("@Estado", SqlDbType.NVarChar, 6).Value=Estado.Text;
-                    adapter.SelectCommand.Parameters.Add("@Direccion", SqlDbType.NVarChar, 100).Value=Direccion.Text ;
-                    adapter.SelectCommand.Parameters.Add("@Distrito", SqlDbType.NVarChar, 15).Value=Distrito.Text;
-                    
-                    if(CodOnu.Text == "")
+                    adapter.SelectCommand.Parameters.Add("@CodClie", SqlDbType.NVarChar, 7).Value = Cod.Text;
+                    adapter.SelectCommand.Parameters.Add("@ApellNomb", SqlDbType.NVarChar, 40).Value = ApellNomb.Text;
+                    adapter.SelectCommand.Parameters.Add("@Dni", SqlDbType.NVarChar, 8).Value = Dni.Text;
+                    adapter.SelectCommand.Parameters.Add("@Estado", SqlDbType.NVarChar, 6).Value = Estado.Text;
+                    adapter.SelectCommand.Parameters.Add("@Direccion", SqlDbType.NVarChar, 100).Value = Direccion.Text;
+                    adapter.SelectCommand.Parameters.Add("@Distrito", SqlDbType.NVarChar, 15).Value = Distrito.Text;
+
+                    if (CodOnu.Text == "")
                     {
                         adapter.SelectCommand.Parameters.Add("@CodOnu", SqlDbType.NVarChar, 4).Value = DBNull.Value;
                     }
@@ -166,12 +168,12 @@ namespace Aplicativo_Corp_InterCable
                     {
                         adapter.SelectCommand.Parameters.Add("@CodOnu", SqlDbType.NVarChar, 4).Value = CodOnu.Text;
                     }
-                    
-                    
-                    adapter.SelectCommand.Parameters.Add("@Olt", SqlDbType.NVarChar, 7).Value=Olt.Text;
+
+
+                    adapter.SelectCommand.Parameters.Add("@Olt", SqlDbType.NVarChar, 7).Value = Olt.Text;
                     adapter.SelectCommand.Parameters.Add("@Alta", SqlDbType.Date).Value = Alta.Value;
-                    adapter.SelectCommand.Parameters.Add("@Deuda", SqlDbType.NVarChar, 6).Value=Deuda.Text;
-                    adapter.SelectCommand.Parameters.Add("@Comentario", SqlDbType.NVarChar, 100).Value=Comen.Text;
+                    adapter.SelectCommand.Parameters.Add("@Deuda", SqlDbType.NVarChar, 6).Value = Deuda.Text;
+                    adapter.SelectCommand.Parameters.Add("@Comentario", SqlDbType.NVarChar, 100).Value = Comen.Text;
                     adapter.SelectCommand.ExecuteNonQuery();
 
                     connection.Close();
@@ -183,26 +185,29 @@ namespace Aplicativo_Corp_InterCable
                     connection.Open();
                     adapter2.SelectCommand.CommandType = CommandType.StoredProcedure;
                     adapter2.SelectCommand.Parameters.Add("@CodClie", SqlDbType.NVarChar, 7).Value = Cod.Text;
-                    adapter2.SelectCommand.Parameters.Add("@Telf", SqlDbType.NVarChar,9).Value = Telef.Text;
+                    adapter2.SelectCommand.Parameters.Add("@Telf", SqlDbType.NVarChar, 9).Value = Telef.Text;
                     adapter2.SelectCommand.ExecuteNonQuery();
 
                     connection.Close();
+                    MessageBox.Show("Registro Insertado Correctamente", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.None);
 
+                    AgregServ.Visible = true;
 
-                    MessageBox.Show("Registro Insertado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+
             }
-            
+
         }
 
         private void CodOnu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            
+
+
         }
 
         private void Telef_TextChanged(object sender, EventArgs e)
@@ -232,7 +237,7 @@ namespace Aplicativo_Corp_InterCable
             }
             else
             {
-                
+
                 ApellNomb.Enabled = true;
                 Dni.Enabled = true;
                 Estado.Enabled = true;
@@ -258,12 +263,12 @@ namespace Aplicativo_Corp_InterCable
                 try
                 {
                     connection.Open();
-                   
+
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText = "sp_clientes_activos";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
-                    
+
                     SqlDataReader reader = cmd.ExecuteReader();
                     DataTable dt = new DataTable();
                     dt.Load(reader);
@@ -416,6 +421,155 @@ namespace Aplicativo_Corp_InterCable
                     param.Value = velocidadPlan;
 
                     cmd.Parameters.Add(param);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    ListaCliente.DataSource = dt;
+                    ListaCliente.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            codCliente = Cod.Text;
+            AgregarServicio agregarServicio = new AgregarServicio();
+            agregarServicio.Show();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            Cod.Text = "";
+            ApellNomb.Text = "";
+            Dni.Text = "";
+            Estado.SelectedIndex = -1;
+            Distrito.SelectedIndex = -1;
+            Direccion.Text = "";
+            CodOnu.SelectedIndex = -1;
+            Olt.Text = "";
+            Alta.Text = "";
+            Deuda.Text = "";
+            Comen.Text = "";
+            Telef.Text = "";
+        }
+
+        private void ListaCliente_SelectionChanged(object sender, EventArgs e)
+        {
+            if (ListaCliente.SelectedRows.Count > 0)
+            {
+                Cod.Enabled = false;
+                Cod.Text = ListaCliente.SelectedRows[0].Cells[0].Value.ToString();
+                ApellNomb.Text = ListaCliente.SelectedRows[0].Cells[1].Value.ToString();
+                Dni.Text = ListaCliente.SelectedRows[0].Cells[2].Value.ToString();
+                Estado.Text = ListaCliente.SelectedRows[0].Cells[3].Value.ToString();
+                Direccion.Text = ListaCliente.SelectedRows[0].Cells[4].Value.ToString();
+                Distrito.Text = ListaCliente.SelectedRows[0].Cells[5].Value.ToString();
+                CodOnu.Text = ListaCliente.SelectedRows[0].Cells[6].Value.ToString();
+                Olt.Text = ListaCliente.SelectedRows[0].Cells[7].Value.ToString();
+                Alta.Text = ListaCliente.SelectedRows[0].Cells[8].Value.ToString();
+                Deuda.Text = ListaCliente.SelectedRows[0].Cells[9].Value.ToString();
+                Comen.Text = ListaCliente.SelectedRows[0].Cells[10].Value.ToString();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("sp_modificar_cliente", connection);
+                    connection.Open();
+                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adapter.SelectCommand.Parameters.Add("@CodCliente", SqlDbType.NVarChar, 7).Value = Cod.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevoApellidosN", SqlDbType.NVarChar, 40).Value = ApellNomb.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevoDNI", SqlDbType.NVarChar, 8).Value = Dni.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevoEstado", SqlDbType.NVarChar, 6).Value = Estado.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevaDireccion", SqlDbType.NVarChar, 100).Value = Direccion.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevoDistrito", SqlDbType.NVarChar, 15).Value = Distrito.Text;
+
+                    if (CodOnu.Text == "")
+                    {
+                        adapter.SelectCommand.Parameters.Add("@NuevoCodONU", SqlDbType.NVarChar, 4).Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        adapter.SelectCommand.Parameters.Add("@NuevoCodONU", SqlDbType.NVarChar, 4).Value = CodOnu.Text;
+                    }
+
+
+                    adapter.SelectCommand.Parameters.Add("@NuevaUbicacionOLT", SqlDbType.NVarChar, 7).Value = Olt.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevaAlta", SqlDbType.Date).Value = Alta.Value;
+                    adapter.SelectCommand.Parameters.Add("@NuevaDeuda", SqlDbType.NVarChar, 6).Value = Deuda.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevoComentario", SqlDbType.NVarChar, 100).Value = Comen.Text;
+                    adapter.SelectCommand.ExecuteNonQuery();
+                   
+                    connection.Close();
+
+                    MessageBox.Show("Registro Modificado","Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void button3_Click_3(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_cuenta_clientes_activos";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    ListaCliente.DataSource = dt;
+                    ListaCliente.Refresh();
+
+                    reader.Close();
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "sp_cuenta_clientes_bajas";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     DataTable dt = new DataTable();

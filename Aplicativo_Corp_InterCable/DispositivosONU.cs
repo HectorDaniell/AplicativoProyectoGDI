@@ -68,7 +68,11 @@ namespace Aplicativo_Corp_InterCable
         private void button1_Click(object sender, EventArgs e)
         {
             panelInsertOnu.Visible = true;
-            
+            NombOnu.Visible = true;
+            label6.Visible = true;
+            Eliminar.Visible = false;
+            AgreOnu.Visible = true;    
+
         }
         private void AgreOnu_Click(object sender, EventArgs e)
         {
@@ -83,6 +87,39 @@ namespace Aplicativo_Corp_InterCable
                     adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                     adapter.SelectCommand.Parameters.Add("@CodONU", SqlDbType.NVarChar, 7).Value = codOn.Text;
                     adapter.SelectCommand.Parameters.Add("@NombreONU", SqlDbType.NVarChar, 40).Value = NombOnu.Text;
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    connection.Close();
+                    MessageBox.Show("Dispositivo Agregado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panelInsertOnu.Visible = true;
+            NombOnu.Visible = false;
+            label6.Visible = false;
+            AgreOnu.Visible = false;
+            Eliminar.Visible = true;
+           
+        }
+
+        private void Eliminar_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("sp_eliminar_ONU", connection);
+                    connection.Open();
+                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adapter.SelectCommand.Parameters.Add("@CodONU", SqlDbType.NVarChar, 7).Value = codOn.Text;
                     adapter.SelectCommand.ExecuteNonQuery();
 
                     connection.Close();

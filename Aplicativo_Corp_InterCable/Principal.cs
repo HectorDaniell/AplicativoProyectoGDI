@@ -178,16 +178,14 @@ namespace Aplicativo_Corp_InterCable
 
         private void Recibo_Click(object sender, EventArgs e)
         {
-            GenerarRecib generarRecib = new GenerarRecib();
-            generarRecib.MdiParent = this;
-            generarRecib.Show();
+ 
         }
 
         private void Registros_Click(object sender, EventArgs e)
         {
-            NuevoServicio nuevoServicio = new NuevoServicio();
-            nuevoServicio.MdiParent = this;
-            nuevoServicio.Show();
+            Servicios servicios = new Servicios();
+            servicios.MdiParent = this;
+            servicios.Show();
         }
 
         private void Devices_Click(object sender, EventArgs e)

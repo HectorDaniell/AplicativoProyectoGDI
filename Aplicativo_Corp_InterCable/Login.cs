@@ -54,6 +54,7 @@ namespace Aplicativo_Corp_InterCable
             {
                 MessageBox.Show("Usuario o contraseña incorrectos","Mensaje del sistema",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
+            
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)

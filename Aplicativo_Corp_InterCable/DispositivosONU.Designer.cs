@@ -43,6 +43,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panelInsertOnu = new System.Windows.Forms.Panel();
             this.AgreOnu = new System.Windows.Forms.Button();
+            this.Eliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ListaOnu)).BeginInit();
             this.panelInsertOnu.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +88,7 @@
             this.button2.Size = new System.Drawing.Size(58, 39);
             this.button2.TabIndex = 4;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
@@ -164,6 +166,7 @@
             // 
             // panelInsertOnu
             // 
+            this.panelInsertOnu.Controls.Add(this.Eliminar);
             this.panelInsertOnu.Controls.Add(this.AgreOnu);
             this.panelInsertOnu.Controls.Add(this.label6);
             this.panelInsertOnu.Controls.Add(this.codOn);
@@ -176,13 +179,23 @@
             // 
             // AgreOnu
             // 
-            this.AgreOnu.Location = new System.Drawing.Point(135, 42);
+            this.AgreOnu.Location = new System.Drawing.Point(118, 42);
             this.AgreOnu.Name = "AgreOnu";
             this.AgreOnu.Size = new System.Drawing.Size(75, 23);
             this.AgreOnu.TabIndex = 13;
             this.AgreOnu.Text = "Aceptar";
             this.AgreOnu.UseVisualStyleBackColor = true;
             this.AgreOnu.Click += new System.EventHandler(this.AgreOnu_Click);
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.Location = new System.Drawing.Point(17, 42);
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Size = new System.Drawing.Size(75, 23);
+            this.Eliminar.TabIndex = 14;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseVisualStyleBackColor = true;
+            this.Eliminar.Click += new System.EventHandler(this.Eliminar_Click);
             // 
             // DispositivosONU
             // 
@@ -229,5 +242,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panelInsertOnu;
         private System.Windows.Forms.Button AgreOnu;
+        private System.Windows.Forms.Button Eliminar;
     }
 }

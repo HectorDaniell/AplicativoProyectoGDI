@@ -58,7 +58,6 @@
             this.NewClient = new System.Windows.Forms.Button();
             this.Devices = new System.Windows.Forms.Button();
             this.ModifyPlan = new System.Windows.Forms.Button();
-            this.Recibo = new System.Windows.Forms.Button();
             this.Registros = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -272,7 +271,7 @@
             this.NewClient.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.NewClient.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.NewClient.Image = ((System.Drawing.Image)(resources.GetObject("NewClient.Image")));
-            this.NewClient.Location = new System.Drawing.Point(32, 9);
+            this.NewClient.Location = new System.Drawing.Point(26, 23);
             this.NewClient.Name = "NewClient";
             this.NewClient.Size = new System.Drawing.Size(99, 75);
             this.NewClient.TabIndex = 4;
@@ -285,7 +284,7 @@
             // 
             this.Devices.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.Devices.Image = ((System.Drawing.Image)(resources.GetObject("Devices.Image")));
-            this.Devices.Location = new System.Drawing.Point(32, 171);
+            this.Devices.Location = new System.Drawing.Point(26, 208);
             this.Devices.Name = "Devices";
             this.Devices.Size = new System.Drawing.Size(99, 75);
             this.Devices.TabIndex = 5;
@@ -298,7 +297,7 @@
             // 
             this.ModifyPlan.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ModifyPlan.Image = ((System.Drawing.Image)(resources.GetObject("ModifyPlan.Image")));
-            this.ModifyPlan.Location = new System.Drawing.Point(32, 252);
+            this.ModifyPlan.Location = new System.Drawing.Point(26, 298);
             this.ModifyPlan.Name = "ModifyPlan";
             this.ModifyPlan.Size = new System.Drawing.Size(99, 75);
             this.ModifyPlan.TabIndex = 6;
@@ -307,25 +306,12 @@
             this.ModifyPlan.UseVisualStyleBackColor = false;
             this.ModifyPlan.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // Recibo
-            // 
-            this.Recibo.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.Recibo.Image = ((System.Drawing.Image)(resources.GetObject("Recibo.Image")));
-            this.Recibo.Location = new System.Drawing.Point(32, 333);
-            this.Recibo.Name = "Recibo";
-            this.Recibo.Size = new System.Drawing.Size(99, 75);
-            this.Recibo.TabIndex = 7;
-            this.Recibo.Text = "Generar Recibos";
-            this.Recibo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Recibo.UseVisualStyleBackColor = false;
-            this.Recibo.Click += new System.EventHandler(this.Recibo_Click);
-            // 
             // Registros
             // 
             this.Registros.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.Registros.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.Registros.Image = ((System.Drawing.Image)(resources.GetObject("Registros.Image")));
-            this.Registros.Location = new System.Drawing.Point(32, 90);
+            this.Registros.Location = new System.Drawing.Point(26, 117);
             this.Registros.Name = "Registros";
             this.Registros.Size = new System.Drawing.Size(99, 75);
             this.Registros.TabIndex = 8;
@@ -338,7 +324,7 @@
             // 
             this.exit.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.exit.Image = ((System.Drawing.Image)(resources.GetObject("exit.Image")));
-            this.exit.Location = new System.Drawing.Point(32, 414);
+            this.exit.Location = new System.Drawing.Point(26, 391);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(99, 75);
             this.exit.TabIndex = 10;
@@ -352,20 +338,19 @@
             this.panel1.Controls.Add(this.NewClient);
             this.panel1.Controls.Add(this.exit);
             this.panel1.Controls.Add(this.Registros);
-            this.panel1.Controls.Add(this.Recibo);
             this.panel1.Controls.Add(this.Devices);
             this.panel1.Controls.Add(this.ModifyPlan);
-            this.panel1.Location = new System.Drawing.Point(12, 74);
+            this.panel1.Location = new System.Drawing.Point(26, 60);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(155, 509);
-            this.panel1.TabIndex = 11;
+            this.panel1.Size = new System.Drawing.Size(155, 504);
+            this.panel1.TabIndex = 13;
             // 
             // Principal
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1079, 671);
             this.Controls.Add(this.panel1);
@@ -419,7 +404,6 @@
         private System.Windows.Forms.Button NewClient;
         private System.Windows.Forms.Button Devices;
         private System.Windows.Forms.Button ModifyPlan;
-        private System.Windows.Forms.Button Recibo;
         private System.Windows.Forms.Button Registros;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;

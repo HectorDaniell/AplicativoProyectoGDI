@@ -59,7 +59,7 @@ namespace Aplicativo_Corp_InterCable
                 {
                     connection.Open();
                     int velocidadPlan = int.Parse(InputVelPlan.Text);
-                   
+
 
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText = "sp_buscar_plan";
@@ -92,7 +92,7 @@ namespace Aplicativo_Corp_InterCable
 
         private void FiltroPlanes_CheckedChanged(object sender, EventArgs e)
         {
-            if( FiltroPlanes.Checked == true)
+            if (FiltroPlanes.Checked == true)
             {
                 BusquedaVelPlan.Visible = true;
                 InputVelPlan.Visible = true;
@@ -108,6 +108,9 @@ namespace Aplicativo_Corp_InterCable
         {
             BusquedaVelPlan.Visible = false;
             InputVelPlan.Visible = false;
+            AgregarPlan.Visible = false;
+            button1.Enabled = false;
+
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -144,6 +147,132 @@ namespace Aplicativo_Corp_InterCable
                     MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AgregarPlan.Visible = true;
+            button5.Visible = true;
+            CodPlan.Enabled = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("sp_insertar_planes", connection);
+                    connection.Open();
+                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adapter.SelectCommand.Parameters.Add("@CodTarifa", SqlDbType.NVarChar, 4).Value = CodPlan.Text;
+                    adapter.SelectCommand.Parameters.Add("@VelocidadNet", SqlDbType.NVarChar, 3).Value = mbps.Text;
+                    
+                    if (tv.Checked)
+                    {
+                        adapter.SelectCommand.Parameters.Add("@TV", SqlDbType.NVarChar, 1).Value =1;
+                    }
+                    else
+                    {
+                        adapter.SelectCommand.Parameters.Add("@TV", SqlDbType.NVarChar, 1).Value =0;
+                    }
+                    adapter.SelectCommand.Parameters.Add("@TarifaM", SqlDbType.NVarChar, 6).Value = precioPlan.Text;
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    connection.Close();
+                    AgregarPlan.Visible = false;
+                    MessageBox.Show("Registro Insertado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AgregarPlan.Visible = false;
+        }
+
+        private void TablePlanes_SelectionChanged(object sender, EventArgs e)
+        {
+            button5.Visible = false;
+            button1.Enabled = true;
+            CodPlan.Enabled = false;
+            if (TablePlanes.SelectedRows.Count > 0)
+            {
+                AgregarPlan.Visible = true;
+                CodPlan.Text = TablePlanes.SelectedRows[0].Cells[0].Value.ToString();
+                mbps.Text = TablePlanes.SelectedRows[0].Cells[1].Value.ToString();
+                tv.Text= TablePlanes.SelectedRows[0].Cells[2].Value.ToString();
+                if(tv.Text =="True")
+                {
+                    tv.Checked = true;
+                }
+                else
+                {
+                    tv.Checked = false;
+                }
+                precioPlan.Text = TablePlanes.SelectedRows[0].Cells[3].Value.ToString();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("sp_modificar_planes", connection);
+                    connection.Open();
+                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adapter.SelectCommand.Parameters.Add("@CodTarifa", SqlDbType.NVarChar, 4).Value = CodPlan.Text;
+                    adapter.SelectCommand.Parameters.Add("@NuevaVelocidad ", SqlDbType.NVarChar, 3).Value = mbps.Text;
+                    if(tv.Checked)
+                    {
+                        adapter.SelectCommand.Parameters.Add("@NuevoTV", SqlDbType.NVarChar, 1).Value = 1;
+                    }
+                    else
+                    {
+                        adapter.SelectCommand.Parameters.Add("@NuevoTV", SqlDbType.NVarChar, 1).Value = 0;
+                    }
+                    
+                    adapter.SelectCommand.Parameters.Add("@NuevaTarifaM", SqlDbType.Float, 6).Value = precioPlan.Text;
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    connection.Close();
+
+                    MessageBox.Show("Plan Modificado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void tv_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CodPlan.Text = "";
+            mbps.Text = "";
+            tv.Checked = false;
+            precioPlan.Text = "";
         }
     }
 }
