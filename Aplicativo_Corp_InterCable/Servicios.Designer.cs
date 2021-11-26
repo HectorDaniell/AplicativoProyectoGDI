@@ -32,7 +32,7 @@
             this.TablaServicios = new System.Windows.Forms.DataGridView();
             this.Modificar = new System.Windows.Forms.Button();
             this.ListarServ = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.listaRecibo = new System.Windows.Forms.Button();
             this.NroRecibo = new System.Windows.Forms.TextBox();
             this.CampoModificar = new System.Windows.Forms.Panel();
             this.CodCliServ = new System.Windows.Forms.TextBox();
@@ -41,6 +41,8 @@
             this.VerPrecio = new System.Windows.Forms.TextBox();
             this.TablaRecibos = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
+            this.generaRecibo = new System.Windows.Forms.Button();
+            this.AllRecibo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TablaServicios)).BeginInit();
             this.CampoModificar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaRecibos)).BeginInit();
@@ -80,19 +82,19 @@
             this.ListarServ.UseVisualStyleBackColor = true;
             this.ListarServ.Click += new System.EventHandler(this.ListarServ_Click);
             // 
-            // button3
+            // listaRecibo
             // 
-            this.button3.Location = new System.Drawing.Point(658, 345);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 35);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Generar Recibos";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.listaRecibo.Location = new System.Drawing.Point(658, 247);
+            this.listaRecibo.Name = "listaRecibo";
+            this.listaRecibo.Size = new System.Drawing.Size(130, 35);
+            this.listaRecibo.TabIndex = 5;
+            this.listaRecibo.Text = "Listar Recibos Activos";
+            this.listaRecibo.UseVisualStyleBackColor = true;
+            this.listaRecibo.Click += new System.EventHandler(this.button3_Click);
             // 
             // NroRecibo
             // 
-            this.NroRecibo.Location = new System.Drawing.Point(659, 395);
+            this.NroRecibo.Location = new System.Drawing.Point(658, 288);
             this.NroRecibo.Name = "NroRecibo";
             this.NroRecibo.Size = new System.Drawing.Size(129, 20);
             this.NroRecibo.TabIndex = 6;
@@ -165,16 +167,38 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // generaRecibo
+            // 
+            this.generaRecibo.Location = new System.Drawing.Point(658, 314);
+            this.generaRecibo.Name = "generaRecibo";
+            this.generaRecibo.Size = new System.Drawing.Size(130, 35);
+            this.generaRecibo.TabIndex = 46;
+            this.generaRecibo.Text = "Generar Recibo";
+            this.generaRecibo.UseVisualStyleBackColor = true;
+            this.generaRecibo.Click += new System.EventHandler(this.generaRecibo_Click);
+            // 
+            // AllRecibo
+            // 
+            this.AllRecibo.Location = new System.Drawing.Point(659, 355);
+            this.AllRecibo.Name = "AllRecibo";
+            this.AllRecibo.Size = new System.Drawing.Size(128, 35);
+            this.AllRecibo.TabIndex = 47;
+            this.AllRecibo.Text = "Generar Todos los Recibos";
+            this.AllRecibo.UseVisualStyleBackColor = true;
+            this.AllRecibo.Click += new System.EventHandler(this.AllRecibo_Click);
+            // 
             // Servicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AllRecibo);
+            this.Controls.Add(this.generaRecibo);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.TablaRecibos);
             this.Controls.Add(this.CampoModificar);
             this.Controls.Add(this.NroRecibo);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.listaRecibo);
             this.Controls.Add(this.ListarServ);
             this.Controls.Add(this.Modificar);
             this.Controls.Add(this.TablaServicios);
@@ -197,7 +221,7 @@
         private System.Windows.Forms.DataGridView TablaServicios;
         private System.Windows.Forms.Button Modificar;
         private System.Windows.Forms.Button ListarServ;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button listaRecibo;
         private System.Windows.Forms.TextBox NroRecibo;
         private System.Windows.Forms.Panel CampoModificar;
         private System.Windows.Forms.Button viewPrecio;
@@ -206,5 +230,7 @@
         private System.Windows.Forms.TextBox CodCliServ;
         private System.Windows.Forms.DataGridView TablaRecibos;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button generaRecibo;
+        private System.Windows.Forms.Button AllRecibo;
     }
 }
