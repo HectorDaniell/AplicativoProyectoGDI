@@ -90,7 +90,7 @@ namespace Aplicativo_Corp_InterCable
                     adapter.SelectCommand.ExecuteNonQuery();
 
                     connection.Close();
-                    MessageBox.Show("Dispositivo Agregado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Dispositivo Agregado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 catch (Exception ex)
                 {
@@ -123,6 +123,7 @@ namespace Aplicativo_Corp_InterCable
                     adapter.SelectCommand.ExecuteNonQuery();
 
                     connection.Close();
+                    MessageBox.Show("Dispositivo Eliminado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 catch (Exception ex)
                 {

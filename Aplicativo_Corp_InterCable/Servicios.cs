@@ -23,7 +23,7 @@ namespace Aplicativo_Corp_InterCable
         {
             TablaServicios.Visible = true;
             TablaRecibos.Visible = false;
-            using (SqlConnection connection = ConectorBD.ConnectToDB())
+            using (SqlConnection connection = ConectorBD.ConnectToDB()) 
             {
                 try
                 {
@@ -311,13 +311,11 @@ namespace Aplicativo_Corp_InterCable
 
                     SqlDataReader reader2 = cmd.ExecuteReader();
 
-                    string output = "";
-
                     while (reader2.Read())
                     {
-                       // output = output + reader2.GetString(0)+"\n";
+
                                             
-                        TextWriter write = new StreamWriter(reader2["NumRecibo"].ToString() + " " + DateTime.Now.ToString("dd-MM-yyyy") + ".txt");
+                        TextWriter write = new StreamWriter(reader2["NumRecibo"].ToString() + " " + DateTime.Now.ToString("MM-yyyy") + ".txt");
                         write.WriteLine("----------------------------");
                         write.WriteLine(" *INTERCABLE    LINKS*");
                         write.WriteLine("RUC: 20601304571");
@@ -348,7 +346,6 @@ namespace Aplicativo_Corp_InterCable
                     }
                     MessageBox.Show("Recibos Generados Correctamente", "Mensaje el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //MessageBox.Show(output, "Mensaje el Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reader2.Close();
                     cmd.Dispose();
                     connection.Close();
